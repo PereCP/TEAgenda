@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TEAgenda">
         <activity
+            android:name=".TascaView"
+            android:exported="false" />
+        <activity
+            android:name=".TasquesActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

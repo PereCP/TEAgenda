@@ -2,6 +2,7 @@ package com.example.teagenda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(MainActivity.this, TascaView.class);
+        startActivity(intent);
         Toast.makeText(this, "Item clicked: " + i, Toast.LENGTH_SHORT).show();
     }
 }
