@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class CreateEvento extends AppCompatActivity {
     private EditText actTitle;
     private EditText actDescr;
     private TextView mDisplayDate;
+    private ImageView colorPanel;
     private Date auxDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private Evento newActivity;
@@ -52,6 +54,7 @@ public class CreateEvento extends AppCompatActivity {
         mDefaultColor = ContextCompat.getColor(CreateEvento.this, R.color.white);
         actTitle = findViewById(R.id.activityTitle);
         actDescr = findViewById(R.id.activityDescription);
+        colorPanel = findViewById(R.id.imageView);
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
 
@@ -73,6 +76,8 @@ public class CreateEvento extends AppCompatActivity {
                 GregorianCalendar gc = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
                 gc.set(year, month, day, 0, 0, 0);
                 auxDate = gc.getTime();
+                String date = year + "/" + month + "/" + day;
+                mDisplayDate.setText(date);
             }
         };
         mButton = (Button) findViewById(R.id.colorPicker);
@@ -103,7 +108,7 @@ public class CreateEvento extends AppCompatActivity {
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 mDefaultColor = color;
-                eLayout.setBackgroundColor(mDefaultColor);
+                colorPanel.setBackgroundColor(mDefaultColor);
             }
         });
         colPicker.show();
