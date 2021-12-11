@@ -31,9 +31,9 @@ public class CustomListAdapter extends ArrayAdapter<Evento> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, parent, false);
         }
         // Lookup view for data population
-        TextView tvTitle = (TextView) convertView.findViewById(R.id.myList);
+        //TextView tvTitle = (TextView) convertView.findViewById(R.id.);
         // Populate the data into the template view using the data object
-        tvTitle.setText(evento.getTitle());
+        //tvTitle.setText(evento.getTitle());
         // Return the completed view to render on screen
         return convertView;
     }

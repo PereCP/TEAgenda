@@ -14,15 +14,14 @@ import android.widget.Toast;
 
 import com.example.teagenda.CapaDomini.DomainController;
 import com.example.teagenda.CapaDomini.Evento;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
-
-    private Button botonAñadir;
+    private FloatingActionButton botonAñadir;
     private ListView myListView;
-    private EditText myEditText;
     private ArrayAdapter<String> mAdapter;
 
     @Override
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botonAñadir.setOnClickListener(this);
         myListView = findViewById(R.id.listView);
         myListView.setOnItemClickListener(this);
-        myEditText = findViewById(R.id.myList);
 
         DomainController.buildDomainController(getApplicationContext());
         List<String> titulos = DomainController.getInstance().getTitulosEventos();
@@ -46,16 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.addButton:
-                /*
-                String text = myEditText.getText().toString().trim();
-                Evento e = new Evento();
-                e.setTitle(text);
-                DomainController.getInstance().addEvento(e);
-                List<String> titulos = DomainController.getInstance().getTitulosEventos();
-                mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
-                myListView.setAdapter(mAdapter);
-                */
-
                 Intent intent = new Intent(MainActivity.this, CreateEvento.class);
                 startActivity(intent);
                 break;
