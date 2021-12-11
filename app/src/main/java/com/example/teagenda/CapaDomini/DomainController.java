@@ -40,6 +40,10 @@ public class DomainController {
         return eventoManager.getEvento(id);
     }
 
+    public void addEvento(Evento e) {
+        this.eventoManager.addEvento(e);
+    }
+
     public static void closeDomainController() {
         if (instance != null) {
             for (Evento e : instance.eventoManager.getEventos().values()) {
