@@ -7,28 +7,47 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/myList"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/nombre_actividad"
-        android:ems="10"
-        android:textColorHint="#ff2851"
-        tools:ignore="TextContrastCheck"
-        android:inputType="text"
-        android:autofillHints="" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/added" />
+        <EditText
+            android:id="@+id/myList"
+            android:layout_width="328dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nombre_actividad"
+            android:inputType="text"
+            android:textColorHint="#ff2851"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/added" />
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></ListView>
+        >
+
+
+    </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end">
+        <Button
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/added" ></Button>
+
+    </LinearLayout>
 
 </LinearLayout>
