@@ -2,10 +2,12 @@ package com.example.teagenda.CapaDomini;
 
 import android.graphics.Color;
 
+import androidx.annotation.ColorInt;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
 import java.util.Random;
 
 @Entity
@@ -19,25 +21,39 @@ public class Evento {
     @ColumnInfo(name = "description")
     private String description;
 
-    //@ColumnInfo(name = "color")
-    //private Color color;
+    @ColorInt
+    @ColumnInfo(name = "color")
+    private int color;
+
+    @ColumnInfo(name = "date")
+    private Date date;
+
+    @ColumnInfo(name = "isCompleted")
+    private boolean isCompleted;
 
     public Evento() {
-        Random rand = new Random();
-        this.id = rand.nextInt();
-
+        this.id = -1;
         this.title = "";
         this.description = "";
-        //this.color = new Color();
+        this.color = Color.WHITE;
+        this.date = new Date();
     }
 
-    public Evento(String title, String description, Color color) {
-        Random rand = new Random();
-        this.id = rand.nextInt();
+    public Evento(int id) {
+        this.id = id;
+        this.title = "";
+        this.description = "";
+        this.color = Color.WHITE;
+        this.date = new Date();
+    }
 
+    public Evento(int id, String title, String description, int color, Date date, boolean isCompleted) {
+        this.id = id;
         this.title = title;
         this.description = description;
-        //this.color = color;
+        this.color = color;
+        this.date = date;
+        this.isCompleted = isCompleted;
     }
 
     public int getId() {
@@ -64,12 +80,27 @@ public class Evento {
         this.description = description;
     }
 
-    /*public Color getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(int color) {
         this.color = color;
     }
-     */
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
 }

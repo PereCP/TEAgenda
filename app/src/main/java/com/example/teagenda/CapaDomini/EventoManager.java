@@ -1,15 +1,17 @@
 package com.example.teagenda.CapaDomini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class EventoManager {
-    private HashMap<Integer, Evento> eventos = new HashMap<>();
+    private ArrayList<Evento> eventos;
 
     public EventoManager() {
-        this.eventos = new HashMap<>();
+        this.eventos = new ArrayList<>();
     }
 
-    public EventoManager(HashMap<Integer, Evento> eventos) {
+    public EventoManager(ArrayList<Evento> eventos) {
         this.eventos = eventos;
     }
 
@@ -18,14 +20,22 @@ public class EventoManager {
     }
 
     public void addEvento(Evento evento) {
-        this.eventos.put(evento.getId(), evento);
+        evento.setId(this.eventos.size());
+        this.eventos.add(evento);
     }
 
-    public HashMap<Integer, Evento> getEventos() {
+    public ArrayList<Evento> getEventos() {
         return eventos;
     }
 
-    public void setEventos(HashMap<Integer, Evento> eventos) {
+    public void setEventos(ArrayList<Evento> eventos) {
         this.eventos = eventos;
+    }
+
+    public List<String> getTitulosEventos() {
+        ArrayList<String> retval = new ArrayList<>();
+        for (Evento e : this.eventos)
+            retval.add(e.getTitle());
+        return retval;
     }
 }
