@@ -125,7 +125,7 @@ public class CreateEvento extends AppCompatActivity {
         newActivity.setColor(0);
         newActivity.setDate(auxDate);
 
-        if (true) {
+        if (!newActivity.getTitle().equals("")) {
             DomainController.getInstance().addEvento(newActivity);
             DomainController.closeDomainController();
             finish();
