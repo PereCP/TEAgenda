@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TEAgenda</string>
+    <string name="a_ade">Añade</string>
+    <string name="added">added</string>
+    <string name="nombre_actividad">Nombre Actividad</string>
 </resources>

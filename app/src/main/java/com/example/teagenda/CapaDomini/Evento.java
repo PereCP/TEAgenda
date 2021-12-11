@@ -19,8 +19,8 @@ public class Evento {
     @ColumnInfo(name = "description")
     private String description;
 
-    @ColumnInfo(name = "color")
-    private Color color;
+    //@ColumnInfo(name = "color")
+    //private Color color;
 
     public Evento() {
         Random rand = new Random();
@@ -28,7 +28,7 @@ public class Evento {
 
         this.title = "";
         this.description = "";
-        this.color = new Color();
+        //this.color = new Color();
     }
 
     public Evento(String title, String description, Color color) {
@@ -37,7 +37,7 @@ public class Evento {
 
         this.title = title;
         this.description = description;
-        this.color = color;
+        //this.color = color;
     }
 
     public int getId() {
@@ -64,11 +64,12 @@ public class Evento {
         this.description = description;
     }
 
-    public Color getColor() {
+    /*public Color getColor() {
         return color;
     }
 
     public void setColor(Color color) {
         this.color = color;
     }
+     */
 }
