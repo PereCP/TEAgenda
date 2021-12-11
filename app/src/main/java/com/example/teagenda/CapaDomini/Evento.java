@@ -37,6 +37,7 @@ public class Evento {
         this.description = "";
         this.color = Color.WHITE;
         this.date = new Date();
+        this.isCompleted = false;
     }
 
     public Evento(int id) {
@@ -45,6 +46,7 @@ public class Evento {
         this.description = "";
         this.color = Color.WHITE;
         this.date = new Date();
+        this.isCompleted = false;
     }
 
     public Evento(int id, String title, String description, int color, Date date, boolean isCompleted) {
