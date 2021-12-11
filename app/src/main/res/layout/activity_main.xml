@@ -16,8 +16,7 @@
         android:ems="10"
         android:textColorHint="#ff2851"
         tools:ignore="TextContrastCheck"
-        android:inputType="text"
-        android:autofillHints="" />
+        android:inputType="text" />
 
     <Button
         android:id="@+id/addButton"
