@@ -23,6 +23,6 @@ public interface EventoDao {
     @Insert
     void insertMultiple(List<Evento> list);
 
-    @Delete
-    void delete(Evento evento);
+    @Query("DELETE FROM evento")
+    void removeAll();
 }

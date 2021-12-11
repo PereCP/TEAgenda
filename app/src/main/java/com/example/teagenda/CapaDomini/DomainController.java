@@ -13,6 +13,7 @@ import java.util.List;
 public class DomainController {
     private static DomainController instance;
     private EventoManager eventoManager;
+    private Evento selectedEvento;
     private AppDatabase appDatabase;
     private Context context;
 
@@ -20,7 +21,12 @@ public class DomainController {
         context = ctx.getApplicationContext();
         eventoManager = new EventoManager();
         appDatabase = Room.databaseBuilder(context,
-                AppDatabase.class, "base-dades").build();
+                AppDatabase.class, "base-dades").allowMainThreadQueries().build();
+        selectedEvento = null;
+
+        for (Evento e : appDatabase.eventoDao().getAll()) {
+            eventoManager.addEvento(e);
+        }
     }
 
     public static void buildDomainController(Context ctx) {
@@ -33,7 +39,7 @@ public class DomainController {
     }
 
     public List<Evento> getEventos() {
-        return new ArrayList<>(eventoManager.getEventos().values());
+        return eventoManager.getEventos();
     }
 
     public Evento getEvento(int id) {
@@ -46,10 +52,23 @@ public class DomainController {
 
     public static void closeDomainController() {
         if (instance != null) {
-            for (Evento e : instance.eventoManager.getEventos().values()) {
+            instance.appDatabase.eventoDao().removeAll();
+            for (Evento e : instance.eventoManager.getEventos()) {
                 instance.appDatabase.eventoDao().insertAll(e);
             }
             instance.appDatabase.close();
         }
+    }
+
+    public Evento getSelectedEvento() {
+        return selectedEvento;
+    }
+
+    public void setSelectedEvento(int id) {
+        this.selectedEvento = this.eventoManager.getEvento(id);
+    }
+
+    public List<String> getTitulosEventos() {
+        return this.eventoManager.getTitulosEventos();
     }
 }
