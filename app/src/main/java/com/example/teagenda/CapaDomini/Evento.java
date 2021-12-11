@@ -2,6 +2,7 @@ package com.example.teagenda.CapaDomini;
 
 import android.graphics.Color;
 
+import androidx.annotation.ColorInt;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -19,8 +20,9 @@ public class Evento {
     @ColumnInfo(name = "description")
     private String description;
 
+    @ColorInt
     @ColumnInfo(name = "color")
-    private Color color;
+    private int color;
 
     public Evento() {
         Random rand = new Random();
@@ -28,10 +30,10 @@ public class Evento {
 
         this.title = "";
         this.description = "";
-        this.color = new Color();
+        this.color = Color.WHITE;
     }
 
-    public Evento(String title, String description, Color color) {
+    public Evento(String title, String description, int color) {
         Random rand = new Random();
         this.id = rand.nextInt();
 
@@ -64,11 +66,11 @@ public class Evento {
         this.description = description;
     }
 
-    public Color getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(int color) {
         this.color = color;
     }
 }
