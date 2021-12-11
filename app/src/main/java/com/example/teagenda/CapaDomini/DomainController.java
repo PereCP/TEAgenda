@@ -58,6 +58,7 @@ public class DomainController {
             }
             instance.appDatabase.close();
         }
+        instance = null;
     }
 
     public Evento getSelectedEvento() {

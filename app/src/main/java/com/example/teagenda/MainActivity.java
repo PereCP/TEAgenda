@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.teagenda.CapaDomini.DomainController;
 import com.example.teagenda.CapaDomini.Evento;
-import com.example.teagenda.Utils.CustomListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button botonAñadir;
     private ListView myListView;
     private EditText myEditText;
-    private CustomListAdapter mAdapter;
+    private ArrayAdapter<String> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myEditText = findViewById(R.id.myList);
 
         DomainController.buildDomainController(getApplicationContext());
-        List<Evento> eventos = DomainController.getInstance().getEventos();
-        mAdapter = new CustomListAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, eventos);
+        List<String> titulos = DomainController.getInstance().getTitulosEventos();
+        mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
         myListView.setAdapter(mAdapter);
     }
 
@@ -52,16 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Evento e = new Evento();
                 e.setTitle(text);
                 DomainController.getInstance().addEvento(e);
-                List<Evento> eventos = DomainController.getInstance().getEventos();
-                //mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
-                mAdapter = new CustomListAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, eventos);
+                List<String> titulos = DomainController.getInstance().getTitulosEventos();
+                mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
                 myListView.setAdapter(mAdapter);
                 */
 
                 Intent intent = new Intent(MainActivity.this, CreateEvento.class);
                 startActivity(intent);
-
                 break;
+
         }
     }
 
@@ -82,5 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         DomainController.buildDomainController(getApplicationContext());
+        List<String> titulos = DomainController.getInstance().getTitulosEventos();
+        mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
+        myListView.setAdapter(mAdapter);
     }
 }
