@@ -51,7 +51,7 @@ public class DomainController {
     }
 
     public static void saveDomainController() {
-        if (instance != null) {
+        if (instance != null && instance.active) {
             instance.appDatabase.eventoDao().removeAll();
             for (Evento e : instance.eventoManager.getEventos()) {
                 instance.appDatabase.eventoDao().insertAll(e);

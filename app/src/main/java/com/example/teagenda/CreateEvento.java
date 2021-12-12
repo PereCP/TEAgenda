@@ -50,7 +50,6 @@ public class CreateEvento extends AppCompatActivity {
 
         DomainController.restoreDomainController(getApplicationContext());
 
-
         auxDate = new Date();
         eLayout = (LinearLayoutCompat) findViewById(R.id.eventLayout);
         mDefaultColor = ContextCompat.getColor(CreateEvento.this, R.color.white);
@@ -126,7 +125,6 @@ public class CreateEvento extends AppCompatActivity {
         newActivity.setTitle(title);
         newActivity.setDescription(desc);
         newActivity.setColor(mDefaultColor);
-        newActivity.setColor(0);
         newActivity.setDate(auxDate);
 
         if (!newActivity.getTitle().equals("")) {

@@ -39,9 +39,8 @@ public class TascaView extends AppCompatActivity {
         NameText.setText(event.getTitle());
         date.setText(event.getDate().toString());
         desc.setText(event.getDescription());
+
         int color = event.getColor();
-
-
         barra.setBackgroundColor(color);
 
         //if(event.getColor());
