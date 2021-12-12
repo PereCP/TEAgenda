@@ -95,4 +95,8 @@ public class DomainController {
     public List<String> getTitulosEventos() {
         return this.eventoManager.getTitulosEventos();
     }
+
+    public void removeEvento(int id) {
+        this.eventoManager.removeEvento(id);
+    }
 }
