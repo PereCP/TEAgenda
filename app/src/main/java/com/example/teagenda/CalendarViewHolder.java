@@ -8,6 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.teagenda.CapaDomini.DomainController;
+import com.example.teagenda.CapaDomini.Evento;
+import com.example.teagenda.Utils.Conversors;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
     public final TextView dayOfMonth;
@@ -18,8 +27,6 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
         dayOfMonth = itemView.findViewById(R.id.cellDayText);
         this.onItemListener = onItemListener;
         itemView.setOnClickListener(this);
-        //itemView.setBackgroundColor(Color.BLUE);
-        itemView.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.DARKEN);
     }
 
     @Override

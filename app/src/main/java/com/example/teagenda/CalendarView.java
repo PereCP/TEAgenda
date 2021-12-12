@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.teagenda.CapaDomini.DomainController;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -100,5 +102,17 @@ public class CalendarView extends AppCompatActivity implements CalendarAdapter.O
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DomainController.saveDomainController();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DomainController.restoreDomainController(getApplicationContext());
     }
 }
