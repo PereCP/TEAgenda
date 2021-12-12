@@ -48,7 +48,7 @@ public class CreateEvento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_evento);
 
-        DomainController.buildDomainController(getApplicationContext());
+        DomainController.restoreDomainController(getApplicationContext());
 
 
         auxDate = new Date();
@@ -137,7 +137,7 @@ public class CreateEvento extends AppCompatActivity {
 
         if (!newActivity.getTitle().equals("")) {
             DomainController.getInstance().addEvento(newActivity);
-            DomainController.closeDomainController();
+            DomainController.saveDomainController();
             finish();
         }
     }
@@ -145,12 +145,12 @@ public class CreateEvento extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        DomainController.closeDomainController();
+        DomainController.saveDomainController();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        DomainController.buildDomainController(getApplicationContext());
+        DomainController.restoreDomainController(getApplicationContext());
     }
 }

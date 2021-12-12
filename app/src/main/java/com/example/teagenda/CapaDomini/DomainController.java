@@ -16,7 +16,7 @@ public class DomainController {
     private Evento selectedEvento;
     private AppDatabase appDatabase;
     private Context context;
-    private int pos;
+    private boolean active;
 
     private DomainController(Context ctx) {
         context = ctx.getApplicationContext();
@@ -24,6 +24,7 @@ public class DomainController {
         appDatabase = Room.databaseBuilder(context,
                 AppDatabase.class, "base-dades").allowMainThreadQueries().build();
         selectedEvento = null;
+        active = false;
 
         for (Evento e : appDatabase.eventoDao().getAll()) {
             eventoManager.addEvento(e);
@@ -31,8 +32,33 @@ public class DomainController {
     }
 
     public static void buildDomainController(Context ctx) {
-        if (instance == null)
+        if (instance == null) {
             instance = new DomainController(ctx);
+            instance.active = true;
+        }
+    }
+
+    public static void restoreDomainController(Context ctx) {
+        instance.context = ctx;
+        instance.eventoManager = new EventoManager();
+        instance.appDatabase = Room.databaseBuilder(instance.context,
+                AppDatabase.class, "base-dades").allowMainThreadQueries().build();
+        instance.active = true;
+
+        for (Evento e : instance.appDatabase.eventoDao().getAll()) {
+            instance.eventoManager.addEvento(e);
+        }
+    }
+
+    public static void saveDomainController() {
+        if (instance != null) {
+            instance.appDatabase.eventoDao().removeAll();
+            for (Evento e : instance.eventoManager.getEventos()) {
+                instance.appDatabase.eventoDao().insertAll(e);
+            }
+            instance.appDatabase.close();
+            instance.active = false;
+        }
     }
 
     public static DomainController getInstance() {
@@ -40,26 +66,22 @@ public class DomainController {
     }
 
     public List<Evento> getEventos() {
-        return eventoManager.getEventos();
+        if (this.active)
+            return eventoManager.getEventos();
+        else
+            return null;
     }
 
     public Evento getEvento(int id) {
-        return eventoManager.getEvento(id);
+        if (this.active)
+            return eventoManager.getEvento(id);
+        else
+            return null;
     }
 
     public void addEvento(Evento e) {
-        this.eventoManager.addEvento(e);
-    }
-
-    public static void closeDomainController() {
-        if (instance != null) {
-            instance.appDatabase.eventoDao().removeAll();
-            for (Evento e : instance.eventoManager.getEventos()) {
-                instance.appDatabase.eventoDao().insertAll(e);
-            }
-            instance.appDatabase.close();
-        }
-        instance = null;
+        if (this.active)
+            this.eventoManager.addEvento(e);
     }
 
     public Evento getSelectedEvento() {
@@ -72,12 +94,5 @@ public class DomainController {
 
     public List<String> getTitulosEventos() {
         return this.eventoManager.getTitulosEventos();
-    }
-
-    public int getPos(){
-        return this.pos;
-    }
-    public void setPos(int i){
-        this.pos = i;
     }
 }

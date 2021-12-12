@@ -17,23 +17,18 @@ import java.util.Date;
 
 public class TascaView extends AppCompatActivity {
     Button buttonExit;
-    public Evento event;
+    private Evento event;
     private TextView NameText;
     private TextView date;
     private TextView desc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("hola");
-        DomainController dc = DomainController.getInstance();
-       // System.out.println("hola2");
-       // int pos = dc.getPos();
-        // System.out.println("Este es pos:" +pos);
-        /*if(pos > 0) {
-            event = dc.getEvento(pos);
-        }*/
-         event = new Evento(1, "title", "String description", 6747, new Date(2001, 12, 1), true);
-        //event = dc.getEvento(13);
         super.onCreate(savedInstanceState);
+
+        DomainController.restoreDomainController(getApplicationContext());
+
+        event = DomainController.getInstance().getSelectedEvento();
         setContentView(R.layout.activity_tasca_view);
         buttonExit = (Button)findViewById(R.id.buttonExit);
         NameText = (TextView)findViewById(R.id.EventName);
@@ -49,6 +44,18 @@ public class TascaView extends AppCompatActivity {
                 startActivity(tornar);
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DomainController.saveDomainController();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DomainController.restoreDomainController(getApplicationContext());
     }
 
 }

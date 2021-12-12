@@ -57,10 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        DomainController dc = DomainController.getInstance();
-        List<String> d = dc.getTitulosEventos();
-        System.out.println("Pos:"+i+ " "+d.size());
-        dc.setPos(0);
+        DomainController.getInstance().setSelectedEvento(i);
         Intent intent = new Intent(MainActivity.this, TascaView.class);
         startActivity(intent);
     }
@@ -68,13 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
-        DomainController.closeDomainController();
+        DomainController.saveDomainController();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        DomainController.buildDomainController(getApplicationContext());
+        DomainController.restoreDomainController(getApplicationContext());
         List<String> titulos = DomainController.getInstance().getTitulosEventos();
         mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
         myListView.setAdapter(mAdapter);
