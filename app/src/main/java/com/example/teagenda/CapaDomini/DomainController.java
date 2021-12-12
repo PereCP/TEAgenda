@@ -16,6 +16,7 @@ public class DomainController {
     private Evento selectedEvento;
     private AppDatabase appDatabase;
     private Context context;
+    private int pos;
 
     private DomainController(Context ctx) {
         context = ctx.getApplicationContext();
@@ -71,5 +72,12 @@ public class DomainController {
 
     public List<String> getTitulosEventos() {
         return this.eventoManager.getTitulosEventos();
+    }
+
+    public int getPos(){
+        return this.pos;
+    }
+    public void setPos(int i){
+        this.pos = i;
     }
 }

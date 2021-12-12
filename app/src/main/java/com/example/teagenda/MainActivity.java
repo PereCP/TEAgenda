@@ -1,5 +1,7 @@
 package com.example.teagenda;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,7 +19,10 @@ import com.example.teagenda.CapaDomini.Evento;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private FloatingActionButton botonAñadir;
@@ -53,7 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        DomainController.getInstance().setSelectedEvento(i);
+        DomainController dc = DomainController.getInstance();
+        List<String> d = dc.getTitulosEventos();
+        System.out.println("Pos:"+i+ " "+d.size());
+        dc.setPos(0);
         Intent intent = new Intent(MainActivity.this, TascaView.class);
         startActivity(intent);
     }
@@ -72,4 +80,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, titulos);
         myListView.setAdapter(mAdapter);
     }
+
 }

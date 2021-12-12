@@ -24,6 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 tools:ignore="MissingConstraints" />
 
             <Space
@@ -31,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
