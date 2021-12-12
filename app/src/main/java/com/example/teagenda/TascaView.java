@@ -51,6 +51,9 @@ public class TascaView extends AppCompatActivity {
         //if(event.getColor());
         elimina = (Button) findViewById(R.id.buttonEliminar);
         imagecheck = (ImageView) findViewById(R.id.imageView2);
+        if(event.isCompleted()){
+            imagecheck.setVisibility(View.VISIBLE);
+        }
         elimina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +69,7 @@ public class TascaView extends AppCompatActivity {
             public void onClick(View view) {
                 event.setCompleted(true);
                 imagecheck.setVisibility(View.VISIBLE);
+                DomainController.getInstance().getSelectedEvento().setCompleted(true);
                 DomainController.saveDomainController();
 
             }
