@@ -10,12 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TEAgenda">
         <activity
+            android:name=".crolltaste"
+            android:exported="false" />
+        <activity
             android:name=".CreateEvento"
             android:exported="false" />
         <activity
             android:name=".TascaView"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

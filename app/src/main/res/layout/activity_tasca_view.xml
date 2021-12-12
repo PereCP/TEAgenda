@@ -21,8 +21,8 @@
 
             <TextView
                 android:id="@+id/EventName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
                 android:text="TextView"
                 android:textSize="30dp"
                 android:textStyle="bold"
@@ -33,26 +33,56 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/Date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="date"
-                tools:ignore="MissingConstraints" />
-
         </LinearLayout>
 
         <TextView
-            android:id="@+id/EventDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
+            android:id="@+id/Date"
+            android:layout_width="189dp"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:inputType="date"
             tools:ignore="MissingConstraints" />
 
-        <Space
+        <TextView
+            android:id="@+id/EventDesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="315dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:orientation="horizontal">
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5" />
+
+
+            <Button
+                android:id="@+id/buttonEliminar"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#F11919"
+
+
+                android:text="Eliminar" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <Button
+                android:id="@+id/buttonCompletar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="Completar" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,8 +99,10 @@
                 android:id="@+id/buttonExit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/ic_launcher_background"
                 android:text="Tornar"
                 tools:ignore="MissingConstraints" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
