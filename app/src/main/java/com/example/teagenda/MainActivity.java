@@ -26,6 +26,7 @@ import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private FloatingActionButton botonAñadir;
+    private FloatingActionButton botonCalendar;
     private ListView myListView;
     private ArrayAdapter<String> mAdapter;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         botonAñadir = findViewById(R.id.addButton);
         botonAñadir.setOnClickListener(this);
+        botonCalendar = findViewById(R.id.calendarButton);
+        botonCalendar.setOnClickListener(this);
         myListView = findViewById(R.id.listView);
         myListView.setOnItemClickListener(this);
 
@@ -51,7 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, CreateEvento.class);
                 startActivity(intent);
                 break;
-
+            case R.id.calendarButton:
+                intent = new Intent(MainActivity.this, CalendarView.class);
+                startActivity(intent);
+                break;
         }
     }
 
