@@ -46,7 +46,7 @@
         <TextView
             android:id="@+id/EventDesc"
             android:layout_width="match_parent"
-            android:layout_height="315dp"
+            android:layout_height="319dp"
             android:text="TextView"
             android:textSize="20dp"
             tools:ignore="MissingConstraints" />
@@ -54,8 +54,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="194dp"
+            android:layout_height="137dp"
             android:orientation="horizontal">
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,11 +83,12 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorAccent"
                 android:text="Completar" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="66dp"
             android:layout_gravity="end"
             android:orientation="horizontal">
 

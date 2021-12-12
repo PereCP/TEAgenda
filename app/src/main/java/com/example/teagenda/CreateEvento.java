@@ -40,6 +40,7 @@ public class CreateEvento extends AppCompatActivity {
     private Date auxDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private Evento newActivity;
+    private Button buttonTornar;
 
 
     @Override
@@ -49,6 +50,7 @@ public class CreateEvento extends AppCompatActivity {
 
         DomainController.buildDomainController(getApplicationContext());
 
+
         auxDate = new Date();
         eLayout = (LinearLayoutCompat) findViewById(R.id.eventLayout);
         mDefaultColor = ContextCompat.getColor(CreateEvento.this, R.color.white);
@@ -56,6 +58,14 @@ public class CreateEvento extends AppCompatActivity {
         actDescr = findViewById(R.id.activityDescription);
         colorPanel = findViewById(R.id.imageView);
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
+        buttonTornar = (Button) findViewById(R.id.buttonTornar);
+        buttonTornar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent tornar = new Intent(CreateEvento.this, MainActivity.class);
+                startActivity(tornar);
+            }
+        });
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
