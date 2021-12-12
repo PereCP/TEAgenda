@@ -13,7 +13,13 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="118dp">
+        <View
+            android:id="@+id/barra"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:background="@color/purple_500">
 
+        </View>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -26,6 +32,8 @@
                 android:text="TextView"
                 android:textSize="30dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="@color/purple_500"
                 tools:ignore="MissingConstraints" />
 
             <Space
@@ -46,7 +54,7 @@
         <TextView
             android:id="@+id/EventDesc"
             android:layout_width="match_parent"
-            android:layout_height="319dp"
+            android:layout_height="43dp"
             android:text="TextView"
             android:textSize="20dp"
             tools:ignore="MissingConstraints" />
@@ -86,25 +94,5 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_gravity="end"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/buttonExit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/ic_launcher_background"
-                android:text="Tornar"
-                tools:ignore="MissingConstraints" />
-
-        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
