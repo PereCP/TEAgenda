@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.teagenda.CapaDomini.DomainController;
@@ -23,7 +25,9 @@ public class TascaView extends AppCompatActivity {
     private TextView date;
     private TextView desc;
     private View barra;
-
+    private  Button elimina;
+    private  Button completar;
+    private ImageView imagecheck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +43,33 @@ public class TascaView extends AppCompatActivity {
         NameText.setText(event.getTitle());
         date.setText(event.getDate().toString());
         desc.setText(event.getDescription());
+        completar = (Button) findViewById(R.id.buttonCompletar);
 
         int color = event.getColor();
         barra.setBackgroundColor(color);
-
+        NameText.setBackgroundColor(color);
         //if(event.getColor());
+        elimina = (Button) findViewById(R.id.buttonEliminar);
+        imagecheck = (ImageView) findViewById(R.id.imageView2);
+        elimina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DomainController dc = DomainController.getInstance();
+                //dc.
+                DomainController.saveDomainController();
+                finish();
+            }
+        });
 
+        completar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                event.setCompleted(true);
+                imagecheck.setVisibility(View.VISIBLE);
+                DomainController.saveDomainController();
+
+            }
+        });
     }
 
     @Override
