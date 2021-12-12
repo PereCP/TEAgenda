@@ -1,5 +1,7 @@
 package com.example.teagenda;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,6 +18,8 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
         dayOfMonth = itemView.findViewById(R.id.cellDayText);
         this.onItemListener = onItemListener;
         itemView.setOnClickListener(this);
+        //itemView.setBackgroundColor(Color.BLUE);
+        itemView.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.DARKEN);
     }
 
     @Override

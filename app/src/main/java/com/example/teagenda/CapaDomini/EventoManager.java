@@ -1,5 +1,6 @@
 package com.example.teagenda.CapaDomini;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +26,10 @@ public class EventoManager {
     }
 
     public ArrayList<Evento> getEventos() {
-        return eventos;
+        ArrayList<Evento> retVal = new ArrayList<>();
+        for (Evento e : this.eventos)
+            if (e != null) retVal.add(e);
+        return retVal;
     }
 
     public void setEventos(ArrayList<Evento> eventos) {
@@ -35,7 +39,12 @@ public class EventoManager {
     public List<String> getTitulosEventos() {
         ArrayList<String> retval = new ArrayList<>();
         for (Evento e : this.eventos)
-            retval.add(e.getTitle());
+            if (e != null)
+                retval.add(e.getTitle());
         return retval;
+    }
+
+    public void removeEvento(int id) {
+        this.eventos.set(id, null);
     }
 }
